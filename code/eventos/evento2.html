@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eventos - CLANDENTYNE MC</title>
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+        .event-hero {
+            height: 300px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('../imagem/eventos/ride/capa.jpg');
+            background-size: cover;
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+            position: relative;
+        }
+        .event-title {
+            color: #ffcc00;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 5px #000;
+        }
+        .event-date {
+            background: #ff0000;
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .event-content {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .detail-section {
+            margin-bottom: 30px;
+        }
+        .detail-title {
+            color: #ff0000;
+            border-bottom: 2px solid #ff0000;
+            padding-bottom: 5px;
+            margin: 20px 0 15px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 2px solid #333;
+            transition: all 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.03);
+            border-color: #ffcc00;
+        }
+        .back-button {
+            display: inline-block;
+            background: #ff0000;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        .back-button:hover {
+            background: #cc0000;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <div class="event-hero">
+        <div>
+            <h1 class="event-title">RIDE ANUAL 2025</h1>
+            <div class="event-date">15 DE JUNHO</div>
+        </div>
+    </div>
+
+    <div class="event-content">
+        <div class="detail-section">
+            <h2 class="detail-title"><i class="fas fa-route"></i> SOBRE O EVENTO</h2>
+            <p>O tradicional passeio anual do Clandestyne MC que reúne motociclistas de toda a região para um dia de aventura nas belíssimas estradas da Serra da Mantiqueira.</p>
+            <p>Este ano com novidades no trajeto e paradas estratégicas para fotos e descanso.</p>
+        </div>
+
+        <div class="detail-section">
+            <h2 class="detail-title"><i class="fas fa-map-marked-alt"></i> TRAJETO</h2>
+            <ul>
+                <li><strong>Saída:</strong> Posto BR - Av. Principal, Mirandópolis/SP - 08:00</li>
+                <li><strong>Parada 1:</strong> Vista Panorâmica (Km 85) - 09:30</li>
+                <li><strong>Parada 2:</strong> Cachoeira do Vale (Km 120) - 11:00</li>
+                <li><strong>Destino Final:</strong> Pico da Neblina (Km 140) - 12:30</li>
+            </ul>
+        </div>
+
+        <div class="detail-section">
+            <h2 class="detail-title"><i class="fas fa-images"></i> GALERIA</h2>
+            <div class="gallery">
+                <img src="../imagem/eventos/ride/foto1.jpg" alt="Ride 2024">
+                <img src="../imagem/eventos/ride/foto2.jpg" alt="Parada na Serra">
+                <img src="../imagem/eventos/ride/foto3.jpg" alt="Grupo no destino">
+            </div>
+        </div>
+
+        <a href="eventos.htm" class="back-button">
+            <i class="fas fa-arrow-left"></i> VOLTAR PARA EVENTOS
+        </a>
+    </div>
+</body>
+</html>

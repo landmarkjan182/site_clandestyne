@@ -75,3 +75,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+function showEventDetails(eventNumber) {
+    const details = document.getElementById(`eventDetails${eventNumber}`);
+    details.classList.toggle('active');
+    
+    const btn = document.querySelector(`#eventDetails${eventNumber}`).previousElementSibling.querySelector('.btn-details');
+    if (details.classList.contains('active')) {
+        btn.innerHTML = '<i class="fas fa-times"></i> OCULTAR DETALHES';
+    } else {
+        btn.innerHTML = '<i class="fas fa-search"></i> VER DETALHES';
+    }
+}
+
+// Modal para imagens (opcional)
+document.querySelectorAll('.gallery-grid img').forEach(img => {
+    img.addEventListener('click', function() {
+        // Implemente um lightbox aqui se desejar
+        console.log('Imagem clicada:', this.src);
+    });
+});

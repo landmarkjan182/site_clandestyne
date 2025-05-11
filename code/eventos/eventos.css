@@ -1,0 +1,252 @@
+/* Reset e estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    color: #fff;
+    line-height: 1.6;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Menu Hamburguer - Estilo do seu script */
+.hamburger-menu {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    cursor: pointer;
+    width: 30px;
+    height: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hamburger-menu .bar {
+    height: 3px;
+    width: 100%;
+    background-color: #ff0000;
+    transition: all 0.3s ease;
+    border-radius: 3px;
+}
+
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Sidebar - Estilo do seu script */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 280px;
+    height: 100%;
+    background-color: #111;
+    z-index: 999;
+    transition: all 0.3s ease;
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+    overflow-y: auto;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-top: 20px;
+}
+
+.sidebar-logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    border: 2px solid #ff0000;
+}
+
+.sidebar-menu {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.sidebar-menu li {
+    margin-bottom: 15px;
+}
+
+.sidebar-menu a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    transition: all 0.3s;
+    border-radius: 5px;
+}
+
+.sidebar-menu a:hover {
+    background-color: rgba(255, 0, 0, 0.2);
+    color: #ff0000;
+}
+
+.sidebar-menu i {
+    margin-right: 12px;
+    font-size: 1.1rem;
+    color: #ff0000;
+    width: 20px;
+    text-align: center;
+}
+
+.simple-rating {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.star-link {
+    color: #ff0000;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 15px;
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.star-link:hover {
+    background-color: #ff0000;
+    color: #000;
+}
+
+.sidebar-footer {
+    text-align: center;
+    color: #ff0000;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-top: 40px;
+}
+
+/* Container principal ajustado para o menu */
+.event-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px 30px;
+    transition: all 0.3s;
+}
+
+/* Restante do seu CSS de eventos... */
+h1 {
+    text-align: center;
+    color: #ffcc00;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h1 i {
+    margin-right: 15px;
+    color: #ff0000;
+}
+
+.event-card {
+    background-color: #111;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 25px;
+    border-left: 5px solid #ff0000;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 0, 0, 0.2);
+}
+
+.event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: rgba(255, 0, 0, 0.1);
+    border-bottom: 1px solid #333;
+}
+
+.event-title {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.event-date {
+    background-color: #ff0000;
+    color: #000;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.event-preview {
+    padding: 20px;
+}
+
+.event-preview p {
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+.event-preview i {
+    color: #ffcc00;
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.event-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.event-link:hover .event-title {
+    color: #ff0000;
+}
+
+.event-link:hover .event-preview p {
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .event-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .event-date {
+        margin-top: 10px;
+        align-self: flex-end;
+    }
+}
