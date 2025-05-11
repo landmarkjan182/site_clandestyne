@@ -94,3 +94,9 @@ document.querySelectorAll('.gallery-grid img').forEach(img => {
         console.log('Imagem clicada:', this.src);
     });
 });
+// Adicione isso no seu script.js ou navigation.js
+document.querySelector('.clickable-card').addEventListener('click', function() {
+    const isGitHub = window.location.hostname.includes('github.io');
+    const baseUrl = isGitHub ? '/site_clandestyne/code/eventos/eventos.htm' : 'code/eventos/eventos.htm';
+    window.location.href = baseUrl;
+});

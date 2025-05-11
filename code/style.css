@@ -691,3 +691,14 @@ footer p {
         height: auto;
     }
 }
+/* Torna todo o card clicável */
+.clickable-card {
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+
+
+
+
