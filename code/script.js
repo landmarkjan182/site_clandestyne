@@ -1,40 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-   
-    const hamburgerMenu = document.getElementById('hamburgerMenu');
-    const sidebar = document.getElementById('sidebar');
+    // Menu Hamburguer (compartilhado com eventos.js)
+    initMenu();
     
-    
-    console.log("Elementos carregados:");
-    console.log("Hamburger:", hamburgerMenu);
-    console.log("Sidebar:", sidebar);
-    
-   
-    hamburgerMenu.addEventListener('click', function(e) {
-        console.log("Menu clicado!");
-        e.stopPropagation();
-        sidebar.classList.toggle('active');
-    });
-
-   
-    document.querySelectorAll('.sidebar-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-                sidebar.classList.remove('active');
-            }
-        });
-    });
-
-    
-    document.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768 && 
-            !sidebar.contains(e.target) && 
-            e.target !== hamburgerMenu) {
-            sidebar.classList.remove('active');
-        }
-        
-    });
-
-    
+    // Efeito de digitação
     const slogan = document.querySelector('.slogan');
     if (slogan) {
         const originalText = slogan.textContent;
@@ -51,20 +19,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100);
     }
 
-    
+    // Scroll suave para âncoras
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth'
-                });
+                target.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
 
-
+    // Efeito hover no botão
     const joinBtn = document.querySelector('.btn');
     if (joinBtn) {
         joinBtn.addEventListener('mouseover', () => {
@@ -74,29 +40,48 @@ document.addEventListener('DOMContentLoaded', function() {
             joinBtn.style.transform = 'scale(1)';
         });
     }
-});
-function showEventDetails(eventNumber) {
-    const details = document.getElementById(`eventDetails${eventNumber}`);
-    details.classList.toggle('active');
-    
-    const btn = document.querySelector(`#eventDetails${eventNumber}`).previousElementSibling.querySelector('.btn-details');
-    if (details.classList.contains('active')) {
-        btn.innerHTML = '<i class="fas fa-times"></i> OCULTAR DETALHES';
-    } else {
-        btn.innerHTML = '<i class="fas fa-search"></i> VER DETALHES';
-    }
-}
 
-// Modal para imagens (opcional)
-document.querySelectorAll('.gallery-grid img').forEach(img => {
-    img.addEventListener('click', function() {
-        // Implemente um lightbox aqui se desejar
-        console.log('Imagem clicada:', this.src);
+    // Card clicável de eventos
+    const eventCard = document.querySelector('.clickable-card');
+    if (eventCard) {
+        eventCard.addEventListener('click', function() {
+            const isGitHub = window.location.hostname.includes('github.io');
+            const baseUrl = isGitHub 
+                ? '/site_clandestyne/code/eventos/eventos.htm' 
+                : 'code/eventos/eventos.htm';
+            window.location.href = baseUrl;
+        });
+    }
+});
+
+// Função compartilhada para o menu
+function initMenu() {
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const sidebar = document.getElementById('sidebar');
+    
+    if (!hamburgerMenu || !sidebar) return;
+
+    hamburgerMenu.addEventListener('click', function(e) {
+        e.stopPropagation();
+        hamburgerMenu.classList.toggle('active');
+        sidebar.classList.toggle('active');
     });
-});
-// Adicione isso no seu script.js ou navigation.js
-document.querySelector('.clickable-card').addEventListener('click', function() {
-    const isGitHub = window.location.hostname.includes('github.io');
-    const baseUrl = isGitHub ? '/site_clandestyne/code/eventos/eventos.htm' : 'code/eventos/eventos.htm';
-    window.location.href = baseUrl;
-});
+
+    document.querySelectorAll('.sidebar-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                hamburgerMenu.classList.remove('active');
+                sidebar.classList.remove('active');
+            }
+        });
+    });
+
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768 && 
+            !sidebar.contains(e.target) && 
+            e.target !== hamburgerMenu) {
+            hamburgerMenu.classList.remove('active');
+            sidebar.classList.remove('active');
+        }
+    });
+}
