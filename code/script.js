@@ -1,8 +1,35 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Menu Hamburguer (compartilhado com eventos.js)
-    initMenu();
+   
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const sidebar = document.getElementById('sidebar');
     
-    // Efeito de digitação
+    if (hamburgerMenu && sidebar) {
+        hamburgerMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
+            hamburgerMenu.classList.toggle('active');
+            sidebar.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.sidebar-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    hamburgerMenu.classList.remove('active');
+                    sidebar.classList.remove('active');
+                }
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && 
+                !sidebar.contains(e.target) && 
+                e.target !== hamburgerMenu) {
+                hamburgerMenu.classList.remove('active');
+                sidebar.classList.remove('active');
+            }
+        });
+    }
+
+   
     const slogan = document.querySelector('.slogan');
     if (slogan) {
         const originalText = slogan.textContent;
@@ -19,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100);
     }
 
-    // Scroll suave para âncoras
+    
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -30,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Efeito hover no botão
+    
     const joinBtn = document.querySelector('.btn');
     if (joinBtn) {
         joinBtn.addEventListener('mouseover', () => {
@@ -41,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Card clicável de eventos
     const eventCard = document.querySelector('.clickable-card');
     if (eventCard) {
         eventCard.addEventListener('click', function() {
@@ -53,35 +79,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-
-// Função compartilhada para o menu
-function initMenu() {
-    const hamburgerMenu = document.getElementById('hamburgerMenu');
-    const sidebar = document.getElementById('sidebar');
-    
-    if (!hamburgerMenu || !sidebar) return;
-
-    hamburgerMenu.addEventListener('click', function(e) {
-        e.stopPropagation();
-        hamburgerMenu.classList.toggle('active');
-        sidebar.classList.toggle('active');
-    });
-
-    document.querySelectorAll('.sidebar-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-                hamburgerMenu.classList.remove('active');
-                sidebar.classList.remove('active');
-            }
-        });
-    });
-
-    document.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768 && 
-            !sidebar.contains(e.target) && 
-            e.target !== hamburgerMenu) {
-            hamburgerMenu.classList.remove('active');
-            sidebar.classList.remove('active');
-        }
-    });
-}

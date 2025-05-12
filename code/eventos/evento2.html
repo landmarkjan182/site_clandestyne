@@ -7,15 +7,175 @@
     <link rel="icon" href="logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            background: #000;
-            color: #fff;
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            padding: 0;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+       
+        .hamburger-menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            cursor: pointer;
+            width: 30px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hamburger-menu .bar {
+            height: 3px;
+            width: 100%;
+            background-color: #ff0000;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .hamburger-menu.active .bar:nth-child(1) {
+            transform: translateY(10px) rotate(45deg);
+        }
+
+        .hamburger-menu.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active .bar:nth-child(3) {
+            transform: translateY(-10px) rotate(-45deg);
+        }
+
+       
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 280px;
+            height: 100%;
+            background-color: rgba(17, 17, 17, 0.95);
+            z-index: 999;
+            transition: all 0.3s ease;
+            padding: 20px;
+            box-shadow: 2px 0 15px rgba(255, 0, 0, 0.3);
+            overflow-y: auto;
+            backdrop-filter: blur(5px);
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-top: 20px;
+        }
+
+        .sidebar-logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 15px;
+            border-radius: 50%;
+            border: 3px solid #ff0000;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .sidebar-logo:hover {
+            transform: rotate(15deg);
+        }
+
+        .sidebar h2 {
+            color: #ffcc00;
+            margin-bottom: 5px;
+            font-size: 1.8rem;
+        }
+
+        .sidebar p {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar-menu a {
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            transition: all 0.3s;
+            border-radius: 5px;
+            background: rgba(255, 0, 0, 0.1);
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-menu a:hover {
+            background: rgba(255, 0, 0, 0.3);
+            border-left: 3px solid #ffcc00;
+            transform: translateX(5px);
+        }
+
+        .sidebar-menu i {
+            margin-right: 12px;
+            font-size: 1.1rem;
+            color: #ffcc00;
+            width: 20px;
+            text-align: center;
+        }
+
+        .simple-rating {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .star-link {
+            color: #ff0000;
+            text-decoration: none;
+            display: inline-block;
+            padding: 10px 20px;
+            border: 2px solid #ff0000;
+            border-radius: 30px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .star-link:hover {
+            background-color: #ff0000;
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        .sidebar-footer {
+            text-align: center;
+            color: #ffcc00;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-top: 40px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
        
         .header {
             background: #000;
@@ -23,6 +183,8 @@
             border-bottom: 2px solid #ff0000;
             display: flex;
             justify-content: center;
+            position: relative;
+            z-index: 1;
         }
         
         .header img {
@@ -61,14 +223,16 @@
             display: inline-block;
         }
         
-       
+     
         .event-content {
             max-width: 900px;
             margin: 0 auto 50px;
             padding: 0 30px;
+            position: relative;
+            z-index: 1;
         }
         
-      
+     
         .detail-section {
             margin-bottom: 50px;
             background: rgba(20, 20, 20, 0.7);
@@ -93,7 +257,7 @@
             color: #ff0000;
         }
         
-     
+    
         .detail-section ul {
             list-style-type: none;
             padding: 0;
@@ -133,7 +297,6 @@
             height: 200px;
             border: 3px solid #333;
             transition: all 0.3s;
-
         }
         
         .gallery-item:hover {
@@ -177,7 +340,7 @@
             border-color: #ff0000;
         }
         
-   
+      
         .location-link {
             display: inline-flex;
             align-items: center;
@@ -200,6 +363,29 @@
             transform: translateY(-3px);
         }
         
+     
+        .motorcycle-icon {
+            position: absolute;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        .icon-1 {
+            top: 10%;
+            right: 5%;
+            font-size: 10rem;
+            color: #ff0000;
+            transform: rotate(15deg);
+        }
+
+        .icon-2 {
+            bottom: 10%;
+            left: 5%;
+            font-size: 8rem;
+            color: #ffcc00;
+            transform: rotate(-10deg);
+        }
+        
         @media (max-width: 768px) {
             .event-hero {
                 height: 250px;
@@ -213,13 +399,51 @@
             .gallery {
                 grid-template-columns: 1fr;
             }
+            
+            .sidebar {
+                width: 250px;
+            }
         }
-        
     </style>
 </head>
-
+<body>
+    
+    <div class="hamburger-menu" id="hamburgerMenu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
 
   
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="logo.png" alt="Logo Clandestyne" class="sidebar-logo">
+            <h2>CLANDENTYNE MC</h2>
+            <p>MIRANDÓPOLIS-SP</p>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="/index.html"><i class="fas fa-home"></i> INÍCIO</a></li>
+            <li><a href="/index.html#about"><i class="fas fa-info-circle"></i> SOBRE NÓS</a></li>
+            <li><a href="/index.html#join"><i class="fas fa-share-alt"></i> REDES SOCIAIS</a></li>
+            <li><a href="/index.html#members"><i class="fas fa-users"></i> MEMBROS</a></li>
+            <li><a href="/index.html#sponsors"><i class="fas fa-handshake"></i> PATROCINADORES</a></li>
+        </ul>
+        <div class="simple-rating">
+            <a href="https://forms.google.com/seu-link" target="_blank" class="star-link">
+                <i class="fas fa-star"></i> AVALIE-NOS
+            </a>
+        </div>
+        <div class="sidebar-footer">
+            <p>ANDANDO PARA VIVER</p>
+        </div>
+    </div>
+
+
+   
+    <i class="fas fa-motorcycle motorcycle-icon icon-1"></i>
+    <i class="fas fa-biking motorcycle-icon icon-2"></i>
+    
+ 
     <div class="event-hero">
         <div>
             <h1 class="event-title">Moto Show/SP300</h1>
@@ -227,13 +451,12 @@
         </div>
     </div>
 
- 
+   
     <div class="event-content">
         <div class="detail-section">
             <h2 class="detail-title"><i class="fas fa-route"></i> SOBRE O EVENTO</h2>
             <p>O tradicional passeio anual do Clandestyne MC que reúne motociclistas de toda a região para um dia de aventura nas belíssimas estradas da Serra da Mantiqueira.</p>
             <p>Este ano com novidades no trajeto e paradas estratégicas para fotos e descanso.</p>
-            
             
             <div class="gallery" style="margin-top: 30px;">
                 <div class="gallery-item">
@@ -242,7 +465,6 @@
             </div>
         </div>
 
-       
         <div class="detail-section">
             <h2 class="detail-title"><i class="fas fa-map-marker-alt"></i> LOCAL DO EVENTO</h2>
             <p><strong>Endereço:</strong> Estrada da Serra da Mantiqueira, KM 42 - São Paulo/SP</p>
@@ -285,5 +507,36 @@
             <i class="fas fa-arrow-left"></i> VOLTAR PARA EVENTOS
         </a>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerMenu = document.getElementById('hamburgerMenu');
+            const sidebar = document.getElementById('sidebar');
+            
+            hamburgerMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+                hamburgerMenu.classList.toggle('active');
+                sidebar.classList.toggle('active');
+            });
+
+            document.querySelectorAll('.sidebar-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        hamburgerMenu.classList.remove('active');
+                        sidebar.classList.remove('active');
+                    }
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768 && 
+                    !sidebar.contains(e.target) && 
+                    e.target !== hamburgerMenu) {
+                    hamburgerMenu.classList.remove('active');
+                    sidebar.classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
