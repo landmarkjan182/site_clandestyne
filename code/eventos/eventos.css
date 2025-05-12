@@ -1,4 +1,4 @@
-/* Reset e estilos base */
+
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +14,7 @@ body {
     min-height: 100vh;
 }
 
-/* Menu Hamburguer - Estilo do seu script */
+
 .hamburger-menu {
     position: fixed;
     top: 20px;
@@ -48,7 +48,7 @@ body {
     transform: translateY(-10px) rotate(-45deg);
 }
 
-/* Sidebar - Estilo do seu script */
+
 .sidebar {
     position: fixed;
     top: 0;
@@ -142,7 +142,7 @@ body {
     margin-top: 40px;
 }
 
-/* Container principal ajustado para o menu */
+
 .event-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -150,7 +150,7 @@ body {
     transition: all 0.3s;
 }
 
-/* Restante do seu CSS de eventos... */
+
 h1 {
     text-align: center;
     color: #ffcc00;

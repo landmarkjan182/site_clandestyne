@@ -359,7 +359,7 @@ footer p {
     margin-bottom: 1rem;
 }
 
-/* Responsividade */
+
 @media (max-width: 768px) {
     .mc-logo {
         font-size: 2rem;
@@ -462,7 +462,7 @@ footer p {
     margin-right: 8px;
     text-shadow: 0 0 5px rgba(255, 204, 0, 0.7);
 }
-/* ===== PÁGINA QUEM SOMOS ===== */
+
 .about-page {
     padding: 50px 20px;
     max-width: 1000px;
@@ -523,7 +523,7 @@ footer p {
     border: 3px solid #ff0000;
 }
 
-/* ===== PÁGINA DE EVENTOS - VERSÃO AVANÇADA ===== */
+
 .events-page {
     padding: 50px 20px;
     max-width: 1000px;
@@ -691,7 +691,7 @@ footer p {
         height: auto;
     }
 }
-/* Torna todo o card clicável */
+
 .clickable-card {
     cursor: pointer;
     position: relative;
