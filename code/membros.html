@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membros - CLANDENTYNE MC</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+     
+        .hamburger-menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            cursor: pointer;
+            width: 30px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hamburger-menu .bar {
+            height: 3px;
+            width: 100%;
+            background-color: #ff0000;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .hamburger-menu.active .bar:nth-child(1) {
+            transform: translateY(10px) rotate(45deg);
+        }
+
+        .hamburger-menu.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active .bar:nth-child(3) {
+            transform: translateY(-10px) rotate(-45deg);
+        }
+
+     
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 280px;
+            height: 100%;
+            background-color: rgba(17, 17, 17, 0.95);
+            z-index: 999;
+            transition: all 0.3s ease;
+            padding: 20px;
+            box-shadow: 2px 0 15px rgba(255, 0, 0, 0.3);
+            overflow-y: auto;
+            backdrop-filter: blur(5px);
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-top: 20px;
+        }
+
+        .sidebar-logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 15px;
+            border-radius: 50%;
+            border: 3px solid #ff0000;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .sidebar-logo:hover {
+            transform: rotate(15deg);
+        }
+
+        .sidebar h2 {
+            color: #ffcc00;
+            margin-bottom: 5px;
+            font-size: 1.8rem;
+        }
+
+        .sidebar p {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar-menu a {
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            transition: all 0.3s;
+            border-radius: 5px;
+            background: rgba(255, 0, 0, 0.1);
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-menu a:hover {
+            background: rgba(255, 0, 0, 0.3);
+            border-left: 3px solid #ffcc00;
+            transform: translateX(5px);
+        }
+
+        .sidebar-menu i {
+            margin-right: 12px;
+            font-size: 1.1rem;
+            color: #ffcc00;
+            width: 20px;
+            text-align: center;
+        }
+
+        .simple-rating {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .star-link {
+            color: #ff0000;
+            text-decoration: none;
+            display: inline-block;
+            padding: 10px 20px;
+            border: 2px solid #ff0000;
+            border-radius: 30px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .star-link:hover {
+            background-color: #ff0000;
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        .sidebar-footer {
+            text-align: center;
+            color: #ffcc00;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-top: 40px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .members-section {
+            padding: 50px 20px;
+            background-color: #000;
+            font-family: 'Arial Black', 'Impact', sans-serif;
+        }
+        
+        .members-title {
+            font-size: 3.5rem;
+            color: #fff;
+            text-shadow: 3px 3px 0 #ff0000;
+            margin-bottom: 50px;
+            letter-spacing: 3px;
+            text-align: center;
+            text-transform: uppercase;
+            position: relative;
+        }
+        
+        .members-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background: #ff0000;
+        }
+        
+      
+        .members-wall {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .member-profile {
+            display: flex;
+            background: #111;
+            border: 5px solid #ff0000;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.2);
+            position: relative;
+            min-height: 350px;
+        }
+        
+        /* LADO ESQUERDO - FOTO E INFOS BÁSICAS */
+        .member-identity {
+            width: 300px;
+            padding: 20px;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-right: 3px solid #ff0000;
+        }
+        
+        .member-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid #ff0000;
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+        
+        .member-name {
+            color: #fff;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        
+        .member-nickname {
+            color: #ff0000;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .member-id {
+            color: #ffcc00;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        
+        .member-rank {
+            background: #ff0000;
+            color: #000;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .member-years {
+            color: #fff;
+            font-size: 1rem;
+            margin-top: auto;
+        }
+        
+      
+        .member-details {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+        }
+        
+        .member-bike {
+            width: 250px;
+            margin-right: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .bike-photo {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border: 3px solid #ff0000;
+            margin-bottom: 15px;
+        }
+        
+        .bike-info {
+            color: #fff;
+            font-size: 0.9rem;
+        }
+        
+        .bike-info strong {
+            color: #ffcc00;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .member-stats {
+            flex: 1;
+            padding: 10px;
+        }
+        
+        .stat-item {
+            margin-bottom: 20px;
+            border-bottom: 1px dashed #ff0000;
+            padding-bottom: 10px;
+        }
+        
+        .stat-title {
+            color: #ff0000;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        
+        .stat-value {
+            color: #fff;
+            font-size: 1rem;
+        }
+        
+        .longest-ride {
+            background: rgba(255, 0, 0, 0.1);
+            padding: 15px;
+            border-left: 3px solid #ff0000;
+            margin-top: 20px;
+        }
+        
+       
+        .member-profile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 0, 0, 0.3);
+        }
+        
+      
+        @media (max-width: 900px) {
+            .member-profile {
+                flex-direction: column;
+            }
+            
+            .member-identity {
+                width: 100%;
+                border-right: none;
+                border-bottom: 3px solid #ff0000;
+            }
+            
+            .member-details {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            .member-bike {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 30px;
+                align-items: center;
+            }
+            
+            .bike-photo {
+                width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hamburger-menu" id="hamburgerMenu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+   
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="/imagem/logo.png" alt="Logo Clandestyne" class="sidebar-logo">
+            <h2>CLANDENTYNE MC</h2>
+            <p>MIRANDÓPOLIS-SP</p>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="/index.html"><i class="fas fa-home"></i> INÍCIO</a></li>
+            <li><a href="/index.html#about"><i class="fas fa-info-circle"></i> SOBRE NÓS</a></li>
+            <li><a href="/index.html#join"><i class="fas fa-share-alt"></i> REDES SOCIAIS</a></li>
+            <li><a href="/index.html#members"><i class="fas fa-users"></i> MEMBROS</a></li>
+            <li><a href="/index.html#sponsors"><i class="fas fa-handshake"></i> PATROCINADORES</a></li>
+        </ul>
+        <div class="simple-rating">
+            <a href="https://forms.google.com/seu-link" target="_blank" class="star-link">
+                <i class="fas fa-star"></i> AVALIE-NOS
+            </a>
+        </div>
+        <div class="sidebar-footer">
+            <p>ANDANDO PARA VIVER</p>
+        </div>
+    </div>
+    <!-- Inclua aqui o cabeçalho e menu do seu site existente -->
+
+    <section class="members-section" id="members">
+        <h2 class="members-title">Membros Oficiais</h2>
+        
+        <div class="members-wall">
+            <!-- MEMBRO 1 -->
+            <div class="member-profile">
+                <div class="member-identity">
+                    <img src="fotos/jason.jpg" alt="Jason" class="member-photo">
+                    <h3 class="member-name">Jason Smith</h3>
+                    <div class="member-nickname">"Bear"</div>
+                    <div class="member-id">ID: 81754 • Membro #0286</div>
+                    <div class="member-rank">Presidente</div>
+                    <div class="member-years">No clube desde: 2015</div>
+                </div>
+                
+                <div class="member-details">
+                    <div class="member-bike">
+                        <img src="motos/harley-jason.jpg" alt="Moto do Jason" class="bike-photo">
+                        <div class="bike-info">
+                            <strong>Harley-Davidson</strong>
+                            <span>Road King Special 2020</span>
+                        </div>
+                    </div>
+                    
+                    <div class="member-stats">
+                        <div class="stat-item">
+                            <div class="stat-title">Cargo</div>
+                            <div class="stat-value">Líder do clube e organizador de eventos</div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-title">Especialidade</div>
+                            <div class="stat-value">Mecânica de motores Big Twin</div>
+                        </div>
+                        
+                        <div class="longest-ride">
+                            <div class="stat-title">Viagem mais longa</div>
+                            <div class="stat-value">Mirandópolis/SP até Ushuaia/AR - 5.200km</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- MEMBRO 2 -->
+            <div class="member-profile">
+                <div class="member-identity">
+                    <img src="fotos/mike.jpg" alt="Mike" class="member-photo">
+                    <h3 class="member-name">Mike Johnson</h3>
+                    <div class="member-nickname">"Grizzly"</div>
+                    <div class="member-id">ID: 45532 • Membro #0451</div>
+                    <div class="member-rank">Vice-Presidente</div>
+                    <div class="member-years">No clube desde: 2017</div>
+                </div>
+                
+                <div class="member-details">
+                    <div class="member-bike">
+                        <img src="motos/indian-mike.jpg" alt="Moto do Mike" class="bike-photo">
+                        <div class="bike-info">
+                            <strong>Indian Chief</strong>
+                            <span>Dark Horse 2021</span>
+                        </div>
+                    </div>
+                    
+                    <div class="member-stats">
+                        <div class="stat-item">
+                            <div class="stat-title">Cargo</div>
+                            <div class="stat-value">Segurança e relações públicas</div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-title">Especialidade</div>
+                            <div class="stat-value">Defesa pessoal para motociclistas</div>
+                        </div>
+                        
+                        <div class="longest-ride">
+                            <div class="stat-title">Viagem mais longa</div>
+                            <div class="stat-value">SP até o Atacama/CHI - 4.800km</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- MEMBRO 3 -->
+            <div class="member-profile">
+                <div class="member-identity">
+                    <img src="fotos/mark.jpg" alt="Mark" class="member-photo">
+                    <h3 class="member-name">Mark Wilson</h3>
+                    <div class="member-nickname">"Spike"</div>
+                    <div class="member-id">ID: 29387 • Membro #0392</div>
+                    <div class="member-rank">Sargento-de-Armas</div>
+                    <div class="member-years">No clube desde: 2018</div>
+                </div>
+                
+                <div class="member-details">
+                    <div class="member-bike">
+                        <img src="motos/custom-mark.jpg" alt="Moto do Mark" class="bike-photo">
+                        <div class="bike-info">
+                            <strong>Custom Chopper</strong>
+                            <span>Bobber 2019 - 1200cc</span>
+                        </div>
+                    </div>
+                    
+                    <div class="member-stats">
+                        <div class="stat-item">
+                            <div class="stat-title">Cargo</div>
+                            <div class="stat-value">Manutenção e customização</div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-title">Especialidade</div>
+                            <div class="stat-value">Pintura personalizada e aerografia</div>
+                        </div>
+                        
+                        <div class="longest-ride">
+                            <div class="stat-title">Viagem mais longa</div>
+                            <div class="stat-value">Tour Nordestino - 3.700km</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Inclua aqui o rodapé do seu site existente -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerMenu = document.getElementById('hamburgerMenu');
+            const sidebar = document.getElementById('sidebar');
+            
+            hamburgerMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+                hamburgerMenu.classList.toggle('active');
+                sidebar.classList.toggle('active');
+            });
+
+            document.querySelectorAll('.sidebar-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        hamburgerMenu.classList.remove('active');
+                        sidebar.classList.remove('active');
+                    }
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768 && 
+                    !sidebar.contains(e.target) && 
+                    e.target !== hamburgerMenu) {
+                    hamburgerMenu.classList.remove('active');
+                    sidebar.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
