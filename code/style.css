@@ -754,6 +754,12 @@ footer p {
 .about h2{
     font-family: 'National Bike', 'Arial Black', sans-serif; 
 }
+.card-content {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0,8);
+}
 
 
 
