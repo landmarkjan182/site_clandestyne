@@ -1,54 +1,448 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre - CLANDENTYNE MC</title>
-    <link rel="icon" href="imagem/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CLANDENTYNE MC - SOBRE NÓS</title>
+  <link rel="icon" href="/imagem/logo.png" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #000000cc, #1a1a1acc), url("/imagem/WhatsApp%20Image%202025-05-14%20at%2001.19.45.jpeg") no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      font-family: 'Arial', sans-serif;
+    }
+  
+    header {
+      text-align: center;
+      padding: 60px 20px 30px;
+    }
+  
+    header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 3px solid red;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+    }
+    .hamburger-menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            cursor: pointer;
+            width: 30px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hamburger-menu .bar {
+            height: 3px;
+            width: 100%;
+            background-color: #ff0000;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .hamburger-menu.active .bar:nth-child(1) {
+            transform: translateY(10px) rotate(45deg);
+        }
+
+        .hamburger-menu.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active .bar:nth-child(3) {
+            transform: translateY(-10px) rotate(-45deg);
+        }
+
+     
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 280px;
+            height: 100%;
+            background-color: rgba(17, 17, 17, 0.95);
+            z-index: 999;
+            transition: all 0.3s ease;
+            padding: 20px;
+            box-shadow: 2px 0 15px rgba(255, 0, 0, 0.3);
+            overflow-y: auto;
+            backdrop-filter: blur(5px);
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-top: 20px;
+        }
+
+        .sidebar-logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 15px;
+            border-radius: 50%;
+            border: 3px solid #ff0000;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .sidebar-logo:hover {
+            transform: rotate(15deg);
+        }
+
+        .sidebar h2 {
+            color: #ffcc00;
+            margin-bottom: 5px;
+            font-size: 1.8rem;
+        }
+
+        .sidebar p {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar-menu a {
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            transition: all 0.3s;
+            border-radius: 5px;
+            background: rgba(255, 0, 0, 0.1);
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-menu a:hover {
+            background: rgba(255, 0, 0, 0.3);
+            border-left: 3px solid #ffcc00;
+            transform: translateX(5px);
+        }
+
+        .sidebar-menu i {
+            margin-right: 12px;
+            font-size: 1.1rem;
+            color: #ffcc00;
+            width: 20px;
+            text-align: center;
+        }
+
+        .simple-rating {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .star-link {
+            color: #ff0000;
+            text-decoration: none;
+            display: inline-block;
+            padding: 10px 20px;
+            border: 2px solid #ff0000;
+            border-radius: 30px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .star-link:hover {
+            background-color: #ff0000;
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        .sidebar-footer {
+            text-align: center;
+            color: #ffcc00;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-top: 40px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+  
+        .titulo {
+          font-size: 36px;
+          font-weight: bold;
+          text-transform: uppercase;
+          margin-bottom: 10px;
+        }
+    
+        .subtitulo {
+          font-size: 20px;
+          color: #ccc;
+          margin-bottom: 30px;
+        }
+    
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 20px;
+        }
+    
+        .blocos {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 30px;
+          justify-content: center;
+          margin-bottom: 40px;
+        }
+    
+        .bloco {
+          background-color: rgba(0, 0, 0, 0.6);
+          border-left: 5px solid red;
+          padding: 25px;
+          flex: 1 1 300px;
+          max-width: 400px;
+        }
+    
+        .bloco h3 {
+          color: white;
+          font-size: 24px;
+          margin-bottom: 10px;
+          text-transform: uppercase;
+        }
+    
+        .bloco p,
+        .bloco ul {
+          color: #ccc;
+          font-size: 16px;
+          line-height: 1.6;
+        }
+    
+        .bloco ul {
+          list-style: none;
+          padding-left: 0;
+        }
+    
+        .historia {
+          background-color: rgba(0, 0, 0, 0.6);
+          border-left: 5px solid red;
+          padding: 30px;
+          max-width: 1000px;
+          margin: 0 auto 60px;
+          
+        }
+    
+        .historia h3 {
+          color: white;
+          font-size: 24px;
+          margin-bottom: 10px;
+          text-transform: uppercase;
+        }
+    
+        .historia .fundacao {
+          color: red;
+          font-weight: bold;
+          font-size: 18px;
+          margin-bottom: 8px;
+        }
+    
+        footer {
+          text-align: center;
+          padding: 30px;
+          font-size: 14px;
+          background-color: #0d0d0d;
+          color: #aaa;
+        }
+    
+        @media (max-width: 768px) {
+          .blocos {
+            flex-direction: column;
+            align-items: center;
+          }
+        }
+    
+    
+    
+        .bloco {
+          transition: all 0.3s ease;
+          transform: translateY(0);
+          box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2);
+        }
+        
+        .bloco:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 15px 30px rgba(255, 0, 0, 0.4);
+          border-left: 5px solid #ffcc00;
+        }
+        
+        
+        header img {
+          transition: all 0.5s ease;
+        }
+        
+        header img:hover {
+          transform: rotate(15deg) scale(1.1);
+          box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
+        }
+        @keyframes pulse {
+          0% {
+            opacity: 0.8;
+          }
+          50% {
+            opacity: 1;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+          }
+          100% {
+            opacity: 0.8;
+          }
+        }
+        
+    
+        .historia {
+          transition: all 0.3s ease;
+        }
+        
+        .historia:hover {
+          box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3);
+          transform: translateY(-5px); 
+          border-left: 5px solid #ffcc00;
+        }
+        
+        .fundacao {
+          position: relative;
+          display: inline-block;
+        }
+        
+        .fundacao::after {
+          content: '⚡';
+          position: absolute;
+          right: -25px;
+          top: 50%;
+          transform: translateY(-50%);
+          opacity: 0;
+          transition: all 0.3s ease;
+        }
+        
+        .fundacao:hover::after {
+          opacity: 1;
+          right: -35px;
+        }
+
+
+  </style>
+  
 </head>
+
 <body>
-   
-    <div class="hamburger-menu" id="hamburgerMenu">...</div>
-    <div class="sidebar" id="sidebar">...</div>
-
- 
-    <div class="main-content">
-        <section class="about-page">
-            <h1>QUEM SOMOS</h1>
-            <div class="history-section">
-                <h2><i class="fas fa-history"></i> NOSSA HISTÓRIA</h2>
-                <p>Fundado em 2010 em Mirandópolis-SP, o CLANDENTYNE MC nasceu da paixão por liberdade sobre duas rodas. Começamos como um pequeno grupo de amigos e hoje somos uma família de motociclistas comprometidos com a estrada e a comunidade.</p>
-            </div>
-
-            <div class="values-section">
-                <h2><i class="fas fa-heart"></i> NOSSOS VALORES</h2>
-                <ul>
-                    <li><strong>Irmandade:</strong> Respeito acima de tudo</li>
-                    <li><strong>Liberdade:</strong> A estrada como estilo de vida</li>
-                    <li><strong>Segurança:</strong> Pilotagem responsável</li>
-                    <li><strong>Comunidade:</strong> Apoio local e ações sociais</li>
-                </ul>
-            </div>
-
-            <div class="members-section">
-                <h2><i class="fas fa-users"></i> NOSSA EQUIPE</h2>
-                <div class="members-grid">
-                    <div class="member">
-                        <div class="member-photo"></div>
-                        <h3>FUNDADOR</h3>
-                        <p>30 anos de estrada</p>
-                    </div>
-                    <div class="member">
-                        <div class="member-photo"></div>
-                        <h3>VICE-PRESIDENTE</h3>
-                        <p>Mecânico especializado</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <div class="hamburger-menu" id="hamburgerMenu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
     </div>
-    <script src="code/script.js"></script>
+
+   
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="/imagem/logo.png" alt="Logo Clandestyne" class="sidebar-logo">
+            <h2>CLANDENTYNE MC</h2>
+            <p>MIRANDÓPOLIS-SP</p>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="/index.html"><i class="fas fa-home"></i> INÍCIO</a></li>
+            <li><a href="/index.html#about"><i class="fas fa-info-circle"></i> SOBRE NÓS</a></li>
+            <li><a href="/index.html#join"><i class="fas fa-share-alt"></i> REDES SOCIAIS</a></li>
+            <li><a href="/index.html#members"><i class="fas fa-users"></i> MEMBROS</a></li>
+            <li><a href="/index.html#sponsors"><i class="fas fa-handshake"></i> PATROCINADORES</a></li>
+        </ul>
+        <div class="simple-rating">
+            <a href="https://forms.google.com/seu-link" target="_blank" class="star-link">
+                <i class="fas fa-star"></i> AVALIE-NOS
+            </a>
+        </div>
+        <div class="sidebar-footer">
+            <p>ANDANDO PARA VIVER</p>
+        </div>
+    </div>
+  <header>
+    <img src="/imagem/logo.png" alt="Logo Clandentyne MC" />
+    <h1 class="titulo">Clandentyne Motorcycle Club</h1>
+    <p class="subtitulo">Ride to live, live to ride</p>
+  </header>
+
+  <div class="container">
+    <div class="blocos">
+      <div class="bloco">
+        <h3>Quem Somos</h3>
+        <p>Somos mais do que um grupo de motociclistas, somos uma irmandade unida pela paixão pela estrada aberta e pelo espírito de liberdade. Valorizamos a lealdade, respeito e a união entre nossos membros.</p>
+      </div>
+
+      <div class="bloco">
+        <h3>Nossos Valores</h3>
+        <ul>
+          <li>• Lealdade</li>
+          <li>• Respeito</li>
+          <li>• Liberdade</li>
+          <li>• União</li>
+          <li>• Honra</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="historia">
+      <h3>História & Trajetória</h3>
+      <p class="fundacao">Fundação</p>
+      <p>O motoclube foi fundado em 2009 por um grupo de amigos apaixonados por motocicletas e pela liberdade da estrada aberta. Desde então, nosso clube tem crescido e se fortalecido, mantendo sempre as cores vermelho e preto como símbolo de nossa jornada e valores.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>CLANDENTYNE M.C. • MIRANDÓPOLIS - SP</p>
+    <p>&copy; 2025 Clandentyne Motorcycle Club. Andando para viver — vivendo para andar.</p>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const sidebar = document.getElementById('sidebar');
+        
+        hamburgerMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
+            hamburgerMenu.classList.toggle('active');
+            sidebar.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.sidebar-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    hamburgerMenu.classList.remove('active');
+                    sidebar.classList.remove('active');
+                }
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && 
+                !sidebar.contains(e.target) && 
+                e.target !== hamburgerMenu) {
+                hamburgerMenu.classList.remove('active');
+                sidebar.classList.remove('active');
+            }
+        });
+    });
+</script>
 </body>
 </html>

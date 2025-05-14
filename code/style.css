@@ -5,6 +5,13 @@
     box-sizing: border-box;
     font-family: 'Arial', sans-serif;
 }
+@font-face {
+    font-family: 'National Bike';
+    src: url('National\ Biker\ Co..otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 
 .hamburger-menu {
     position: fixed;
@@ -208,11 +215,13 @@ header {
 }
 
 .slogan {
+    font-family: 'National Bike', 'Arial Black', sans-serif; 
     font-size: 3rem;
     margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 5px;
-    color: #fff;
+    color: #f5f5f5;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .welcome {
@@ -341,7 +350,7 @@ header {
     line-height: 1.6;
 }
 .about-item2 {
-    background-image: url('https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-image: url('/imagem/WhatsApp\ Image\ 2025-05-14\ at\ 01.27.48.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -742,7 +751,9 @@ footer p {
     position: relative;
     transition: all 0.3s ease;
 }
-
+.about h2{
+    font-family: 'National Bike', 'Arial Black', sans-serif; 
+}
 
 
 

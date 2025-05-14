@@ -66,16 +66,5 @@ document.addEventListener('DOMContentLoaded', function() {
         joinBtn.addEventListener('mouseout', () => {
             joinBtn.style.transform = 'scale(1)';
         });
-    }
-
-    const eventCard = document.querySelector('.clickable-card');
-    if (eventCard) {
-        eventCard.addEventListener('click', function() {
-            const isGitHub = window.location.hostname.includes('github.io');
-            const baseUrl = isGitHub 
-                ? '/site_clandestyne/code/eventos/eventos.htm' 
-                : 'code/eventos/eventos.htm';
-            window.location.href = baseUrl;
-        });
-    }
+    } 
 });
