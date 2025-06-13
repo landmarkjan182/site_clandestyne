@@ -1,33 +1,63 @@
+
 document.addEventListener('DOMContentLoaded', function() {
-   
-    const hamburgerMenu = document.getElementById('hamburgerMenu');
-    const sidebar = document.getElementById('sidebar');
+  const hamburgerMenu = document.getElementById('hamburgerMenu');
+  const sidebar = document.getElementById('sidebar');
+  
+ 
+  hamburgerMenu.addEventListener('mouseenter', function() {
+    this.style.boxShadow = '0 0 10px rgba(255, 0, 0, 0.7)';
+  });
+  
+  hamburgerMenu.addEventListener('mouseleave', function() {
+    this.style.boxShadow = 'none';
+  });
+  
+  
+  hamburgerMenu.addEventListener('click', function(e) {
+    e.stopPropagation();
+    this.classList.toggle('active');
+    sidebar.classList.toggle('active');
     
-    if (hamburgerMenu && sidebar) {
-        hamburgerMenu.addEventListener('click', function(e) {
-            e.stopPropagation();
-            hamburgerMenu.classList.toggle('active');
-            sidebar.classList.toggle('active');
-        });
+  });
 
-        document.querySelectorAll('.sidebar-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    hamburgerMenu.classList.remove('active');
-                    sidebar.classList.remove('active');
-                }
-            });
-        });
+ 
+  document.querySelectorAll('.sidebar-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        hamburgerMenu.classList.remove('active');
+        sidebar.classList.remove('active');
+      }
+    });
+  });
 
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768 && 
-                !sidebar.contains(e.target) && 
-                e.target !== hamburgerMenu) {
-                hamburgerMenu.classList.remove('active');
-                sidebar.classList.remove('active');
-            }
-        });
+  
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 768 && 
+        !sidebar.contains(e.target) && 
+        e.target !== hamburgerMenu) {
+      hamburgerMenu.classList.remove('active');
+      sidebar.classList.remove('active');
     }
+  });
+  
+
+  const titles = document.querySelectorAll('.section-title');
+  titles.forEach(title => {
+    const text = title.textContent;
+    title.textContent = '';
+    
+    let i = 0;
+    const typingEffect = setInterval(() => {
+      if (i < text.length) {
+        title.textContent += text.charAt(i);
+        i++;
+      } else {
+        clearInterval(typingEffect);
+      }
+    }, 50);
+  });
+
+
 
    
     const slogan = document.querySelector('.slogan');
