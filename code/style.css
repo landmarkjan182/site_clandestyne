@@ -374,7 +374,7 @@ header {
     line-height: 1.6;
 }
 .about-item1 {
-    background-image: url('https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-image: url('../imagem/mos.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -409,7 +409,7 @@ header {
     line-height: 1.6;
 }
 .about-item2 {
-    background-image: url('../imagem/WhatsApp\ Image\ 2025-05-14\ at\ 01.27.48.jpeg');
+    background-image: url('../imagem/pirai.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -445,7 +445,7 @@ header {
     line-height: 1.6;
 }
 .about-item3 {
-    background-image: url('https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-image: url('../imagem/evento.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
